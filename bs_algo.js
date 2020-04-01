@@ -1,8 +1,3 @@
-//BFS
-
-
-
-
 
 //Binary Search
 const binary_search = (arr, target) => {
