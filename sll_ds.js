@@ -131,3 +131,35 @@ linkedList.insertAt(600, 2);
 
 console.table(linkedList);
 console.log(linkedList.head)
+
+
+
+//another way to do the insert method
+function insertNodeAtPosition(head, data, position) {
+    //check if ll is empty
+    if (!this.head) {
+        this.head = new Node(data);
+        return
+    }
+
+    let node = new Node(data);
+    let current, previous;
+    let count = 0;
+    //current will be first
+    current = this.head;
+    //check to see if count less than index
+    while (current && count < position) {
+        //iterate through list while moving pointer
+        previous = current;
+        count++;
+        current = current.next;
+    }
+    //traverse the list until reaching desired position node
+    //then assign the node next pointer to current 
+    node.next = current;
+    //then move previous down one to node
+    previous.next = node;
+    
+    //in this problem they want the head returned 
+    return head
+}
