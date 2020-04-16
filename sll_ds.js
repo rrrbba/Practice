@@ -163,3 +163,48 @@ function insertNodeAtPosition(head, data, position) {
     //in this problem they want the head returned 
     return head
 }
+
+
+
+
+
+
+//deletes node at specified position for a sll
+function deleteNode(head, position) {
+    let temp=head;
+    let pos=1;
+    //if position is at [0]
+    if(position==0)
+        return head.next;
+    //while the pos is less than position, loop through the ll
+    while(pos<position)
+    {
+        head=head.next;
+        pos++;    
+    }
+    //when the while loop breaks, move the head over the one you want to remove (deletes it) 
+    head.next=head.next.next;
+    return temp;
+}
+
+//print the linked list
+function printLinkedList(head) {
+    //if no head
+     if (head == null){
+        return;
+    }
+    let current = head;
+    //while true
+    while(true){
+        console.log(current.data);
+        //if the head.next is not null
+        if (current.next != null){
+            //iterate through it
+            current = current.next;
+        }
+        //stop the loop
+        else {
+            break;
+        }
+    }
+}
