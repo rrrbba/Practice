@@ -9,7 +9,6 @@
 
 
 
-
 function makeArrayConsecutive2(statues) {
     sortedArr = statues.sort((a,b)=> b-a); //sorts in ascending order
     let counter = 0;
