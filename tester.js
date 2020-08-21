@@ -58,3 +58,20 @@ const hummus = factor => {
 }
 
 console.log(hummus(3))
+
+
+// White Board Exercise
+// What will be printed if you run this? Why?
+
+
+function test() {
+   console.log(a);
+   console.log(foo());
+   
+   var a = 1;
+   function foo() {
+      return 2;
+   }
+}
+
+test();
