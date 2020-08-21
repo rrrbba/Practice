@@ -13,3 +13,23 @@ function countChar(arr, letter) {
 }
 
 console.log(countChar(myArr, 'o'))
+
+
+//Turning the above into a proper tail call (which is when the return statment is only a recursive call to the function)
+
+function countChars(arr, letter, total) {
+    let firstChar = arr.shift();
+    let count = (firstChar === letter) ? 1 : 0;
+
+    if (arr.length === 0) {
+        return count + total; //adding the count to the total number of times the charcter appears
+    }
+
+    return countChars(arr, letter, count + total); 
+    //this call looks like (myArr, 'g', 0 + 0) for the letter g
+    //the second call looks like (myArr, 'o', 1+ 0 =1) for the letter o
+    //the third call looks like (myArr, 'o', 1 + 1 =2) for the letter o
+    //the fourth call (myArr, 'd', 0 + 2 = 2) for the letter d
+}
+
+console.log(countChars(myArr, 'o', 0)); //Must start total at 0
