@@ -75,3 +75,5 @@ function test() {
 }
 
 test();
+
+// It will print undefined and 2. The reason for the undefined for console logging the a variable is because of hoisting. When you hoist a variable that declared using var, it is initialized and assigned undefined.
