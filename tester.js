@@ -61,6 +61,22 @@ console.log(hummus(3))
 
 
 // White Board Exercise
+// What will be printed if you run the following code?
+// How would you fix it to work correctly (add 2 to x and print it)
+
+
+var  x = 21;
+function addTwo() {
+    console.log(x);
+    var x = x + 2;
+};
+addTwo();
+
+// It will print undefined, because Js prefers local scope over global scope. So var x = x + 2 is hoisted and since it uses var, its assigned undefined. To get it to work correctly, you can move the variable x = 21 inside the function and move the console log below x = x + 2
+
+
+
+// White Board Exercise
 // What will be printed if you run this? Why?
 
 
