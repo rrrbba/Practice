@@ -55,3 +55,44 @@ console.log(isEnough())
 // console.log('You do not have enough for the trip!');
 // }
 // }
+
+let balance = 1000;
+
+function takeMoneyOut(accountBalance, amount) {
+    const newBalance = accountBalance - amount
+    const statement = "You have: " + newBalance
+
+    return {
+        newBalance,
+        statement
+    }
+}
+
+function addMoney(accountBalance, amount) {
+    const newBalance = accountBalance + amount
+    const statement = "You have: " + newBalance
+
+    return {
+        newBalance,
+        statement
+    }
+}
+
+function isEnough(balance, tripCost) {
+    if(balance > tripCost) {
+        return "You have enough"
+    } else {
+        return "You don't have enough"
+    }
+}
+
+const result = takeMoneyOut(balance, 200)
+balance = result.newBalance
+console.log(result.statement)
+
+result = addMoney(balance, 200)
+balance = result.newBalance
+console.log(result.statement)
+
+const tripCost = 1500
+console.log(isEnough(balance, tripCost))

@@ -4,7 +4,7 @@
 
 function factorial(num) {
     //base case
-    if(num === 0) {
+    if(num === 1) {
         return 1 
     } 
 
@@ -14,7 +14,15 @@ function factorial(num) {
 
 console.log(factorial(1))
 
+//using proper tail calls
+function factorialPTC(num, result) {
+  if(num === 1) return result
 
+  return factorialPTC(num-1, result * num)
+
+}
+
+console.log(factorialPTC(4,1))
 
 // Write a function called ‘contains' that searches for a value in a nested object. It returns true if the object contains that value.
 // You could use Object.keys and iterate with Array#some.
@@ -56,3 +64,25 @@ var spaceXLaunch = {
 console.log(contains(spaceXLaunch, 'B1056')); //true
 console.log(contains(spaceXLaunch, 'CRS-17')); //true
 console.log(contains(spaceXLaunch, 'abc')); //false
+
+//OR
+
+
+function contains(obj, value) {
+
+  const vals = Object.values(obj)
+  //iterate through keys
+  for (let i=0; i<vals.length; i++) {
+    if(vals[i] === value) return true;
+
+    if(typeof vals[i] === 'object'){
+
+      let result = contains(vals[i], value)
+      if (result) return true
+    }
+       
+  } 
+  
+  return false
+
+}

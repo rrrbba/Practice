@@ -33,8 +33,8 @@ function compareTwoObjects(obj1, obj2) {
 
 // Test cases to verify
 // true
-const a = {a: 1, b: 2};
-const b = {a: 1, b: 2};
+// const a = {a: 1, b: 2};
+// const b = {a: 1, b: 2};
 
 
 // // true
@@ -53,4 +53,31 @@ const b = {a: 1, b: 2};
 // const a = {a: 1, b: 2};
 // const b = {a: 1, b: 2, c:3};
 
+
+
+
+//OR
+
+function compareTwoObjects(obj1, obj2) {
+
+    const keyOne = Object.keys(obj1)
+    const keyTwo = Object.keys(obj2)
+
+    if(keyOne.length !== keyTwo.length){
+        return false;
+    } 
+
+    for (let key in obj1) { //this is looking at the key
+        //the below is checking the values
+        if(!obj2[key] || obj2[key] !== obj1[key]) { //if the value in obj1 doesn't exist in obj2 (if it's undefined)return false OR it does exist and the values don't match
+            
+            return false
+        }
+    }
+    
+    return true
+}
+
+const a = {b: 2, a: 1};
+const b = {a: 1, b: 2};
 console.log(compareTwoObjects(a,b))
