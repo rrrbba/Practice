@@ -70,3 +70,96 @@ myAfterFunc(); // prints test
 myAfterFunc(); // prints test
 myAfterFunc(); // prints test
 myAfterFunc(); // nothing is printed
+
+
+
+// Implement a function "rollCall" that accepts an array of names and returns a function. The first time the returned function is invoked, it should log the first name to the console. The second time it is invoked, it should log the second name to the console, and so on, until all names have been called. Once all names have been called, it should log ‘All present’.
+
+// function rollCall(namesArray) {
+//     let counter = 0;
+//     function callback() {
+//       if (counter < namesArray.length) {
+//         console.log(namesArray[counter]);
+//         counter++;
+//       } else {
+//         console.log("All present");
+//       }
+//     }
+//     return callback;
+    
+    
+// }
+
+
+// // test setup
+// const myRollCall = rollCall(['John', 'Mary', 'Jane', 'David']);
+// myRollCall(); // prints John
+// myRollCall(); // prints Mary
+// myRollCall(); // prints Jane
+// myRollCall(); // prints David
+// myRollCall(); // All present
+// myRollCall(); // All present
+
+
+
+
+// Create a function "cycleIterator" that accepts an array, and returns a function. The returned function will accept zero arguments. When first invoked, the returned function will return the first element of the array. When invoked a second time, the returned function will return the second element of the array, and so forth. After returning the last element of the array, the next invocation will return the first element of the array again, and continue on with the second after that, and so forth.
+
+function cycleIterator(input) {
+    let counter = 0;
+    function cyclingItems() {
+      counter++;
+      console.log(input[(counter - 1) % input.length]);
+    }
+    return cyclingItems;
+}
+
+
+const myFunc = cycleIterator(['John', 'Mary', 'Jane', 'David']);
+myFunc(); // prints John
+myFunc(); // prints Mary
+myFunc(); // prints Jane
+myFunc(); // prints David
+myFunc(); // prints John
+myFunc(); // prints Mary
+
+
+
+
+// Implement a function "makeHistory" that returns a function (that will accept a string). The returned function will save a history of strings passed into the returned function (one per invocation only). Every time a string is passed into the function, the function should return that same string with the word 'done' after it. However, if the string 'undo' is passed into the function, then the function should delete the last action saved in the history, and return that deleted string with the word 'undone' after. If 'undo' is passed into the function and the function's history is empty, then the function should return the string 'nothing to undo'.
+
+function makeHistory(limit) {
+    const memory = [];
+    function closureFn(input) {
+      if (input !== "undo") {
+        if (memory.length >= limit) memory.shift();
+        memory.push(input);
+        return input + " - done";
+      } else {
+        if (memory.length === 0) return "nothing to undo";
+        let remove = memory.pop();
+        return remove + " - undone";
+      }
+    }
+    return closureFn;
+
+}
+
+// testing setup
+const myHistory = makeHistory();
+
+
+console.log(myHistory('exercise')); // exercise - done
+console.log(myHistory('study')); // study - done
+console.log(myHistory('cook')); // cook - done
+console.log(myHistory('eat')); // eat - done
+console.log(myHistory('sleep')); // sleep - done
+console.log(myHistory('undo')); // sleep - undone
+console.log(myHistory('undo')); // eat - undone
+console.log(myHistory('watch tv')); // watch tv - done
+console.log(myHistory('undo')); // watch tv - undone
+console.log(myHistory('undo')); // cook - undone
+console.log(myHistory('undo')); // study - undone
+console.log(myHistory('undo')); // exercise - undone
+console.log(myHistory('undo')); // nothing to undo
+console.log(myHistory('undo')); // nothing to undo
