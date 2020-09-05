@@ -41,4 +41,47 @@
     }
     return stack.length === 0
 }
-console.log(bb('{{||[]||}}'))
+// console.log(bb('{{||[]||}}'))
+
+function balancedParenthesis(input) {
+    //use a stack for this to push and pop the character to the stack
+    let stack = []
+
+    let openb = {
+        '[': ']',
+        '(': ')',
+        '{': '}',
+        '|': '|'
+    }
+    let closingb = {
+        ']': true,
+        ')': true,
+        '}': true,
+        '|': true
+    }
+
+    //traverse through the string 
+    for (let i = 0; i < input.length; i++) {
+        let brac = input[i]
+
+        //if there are open brackets
+        if (openb[brac]) {
+            //push the bracket to the stack
+            stack.push(brac)
+            //if there are closing brackets
+        } else if (closingb[brac]) {
+            //if there are some that are left over (one doesn't have a match)
+            if (openb[stack.pop()] !== brac) {
+                //return false
+                return false
+            }
+        }
+    }
+    return stack.length === 0
+
+}
+console.log(balancedParenthesis("[()]")) 
+// => true
+// balancedParenthesis('[()]{}{[()()]()}’) => true
+// balancedParenthesis('[()]{’) => false
+// balancedParenthesis('[(])’) => false
