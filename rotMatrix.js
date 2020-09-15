@@ -7,16 +7,10 @@ let matrix =   [[1, 2, 3, 4],
 
 function rotate(matrix) {
     const newMatrix = [];
-    
-    let i = 0;
-    let j = 0;
+    const numColumns = matrix[0].length
 
-    for(let i=0; i<matrix[0].length; i++){
-        for(let j=matrix.length-1; j>=0; j--){
-            newMatrix[i][j] = matrix[j][i];
-            j++;
-        }
-        i++
+    for(let i=0; i<numColumns; i++){
+        newMatrix.push(matrix.map(row => row.pop()))
     }
 
     return newMatrix;
