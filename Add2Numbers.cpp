@@ -6,7 +6,7 @@ int main() {
 
     int firstInt;
     int secondInt;
-    int sum, difference, product, quotient, remainder;
+    int sum, difference, product, quotient;
     
 
     cout << "Enter first integer: ";
@@ -26,3 +26,14 @@ int main() {
 
     return 0; 
 }
+
+// Getting the program to run (in windows)
+//g++ -o Add2Numbers.exe Add2Numbers.cpp
+//Then
+//./Add2Numbers
+
+//For mac use
+//g++ -o Add2Numbers Add2Numbers.cpp
+
+//-o means option where you specify the output filename
+//and Add2Numbers.cpp is the input source file
