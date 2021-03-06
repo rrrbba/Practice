@@ -41,3 +41,4 @@ int main() {
 //g++ os the name of the GCC C++ compiler
 //-o means option where you specify the output filename
 //and Add2Numbers.cpp is the input source file
+//Can add -Wall to see warnings
