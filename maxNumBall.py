@@ -15,12 +15,15 @@ Example 3:
 Input: text = "leetcode"
 Output: 0
 """
+import collections
 
-# class Solution:
 def maxNumberOfBalloons(text: str) -> int:
+
+
     #count instances of how char
-    count = counter(text)
+    count = Counter(text)
     print(count)
+    #var for instances of balon
     instances = float('inf')
     
     for char in "balon":
